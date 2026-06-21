@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华体会 · 简明访问指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 720px;
+            width: 100%;
+            padding: 2.4rem 1.5rem 3rem;
+            margin: 0 auto;
+        }
+
+        /* hero 横幅 — 极简留白，字重对比 */
+        .hero {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 1.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #111827;
+            margin-bottom: 0.6rem;
+            line-height: 1.2;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 400;
+            max-width: 70%;
+            border-left: 3px solid #d1d5db;
+            padding-left: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        /* 背景说明 — 小字块，信息密度高 */
+        .context {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 1.4rem 1.6rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+            border: 1px solid #f0f0f0;
+            font-size: 0.95rem;
+        }
+
+        .context strong {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .context p {
+            margin-bottom: 0.55rem;
+        }
+
+        .context p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 三段自然介绍：卡片式，留白，轻分割 */
+        .intro-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        .intro-item {
+            background: #ffffff;
+            padding: 1.2rem 1.6rem 1.4rem;
+            border-radius: 14px;
+            transition: box-shadow 0.15s;
+            border: 1px solid #f3f4f6;
+        }
+
+        .intro-item h2 {
+            font-size: 1.2rem;
+            font-weight: 550;
+            color: #1f2937;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.01em;
+        }
+
+        .intro-item .meta {
+            display: block;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .intro-item p {
+            font-size: 0.95rem;
+            color: #374151;
+            margin-bottom: 0.4rem;
+        }
+
+        .intro-item p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .intro-item .tag {
+            display: inline-block;
+            background: #f3f4f6;
+            border-radius: 30px;
+            padding: 0.1rem 0.7rem;
+            font-size: 0.7rem;
+            color: #4b5563;
+            margin-top: 0.5rem;
+        }
+
+        /* FAQ 摘要 — 简洁条目 */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 1.4rem 1.6rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .faq-summary h3 {
+            font-size: 1.05rem;
+            font-weight: 550;
+            color: #111827;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .faq-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 0.9rem;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #2563eb;
+            font-size: 0.9rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .faq-a {
+            font-size: 0.9rem;
+            color: #4b5563;
+        }
+
+        .faq-a a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px dotted #b0c4de;
+        }
+
+        .faq-a a:hover {
+            border-bottom-style: solid;
+        }
+
+        /* 页尾访问提示 — 干净轻量 */
+        .footer-note {
+            margin-top: 1.2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+            text-align: left;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .footer-note .inline-link {
+            font-weight: 500;
+            color: #111827;
+            text-decoration: none;
+            border-bottom: 1px solid #cbd5e1;
+        }
+
+        .footer-note .inline-link:hover {
+            border-bottom-color: #111827;
+        }
+
+        .footer-note .small-meta {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: #9ca3af;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 520px) {
+            .page {
+                padding: 1.6rem 1rem 2rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero .sub {
+                max-width: 100%;
+                border-left-width: 2px;
+                padding-left: 0.7rem;
+                font-size: 0.9rem;
+            }
+            .intro-item {
+                padding: 1rem 1rem 1.1rem;
+            }
+            .context, .faq-summary {
+                padding: 0.9rem 1rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .intro-item h2 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 首页横幅 hero -->
+    <div class="hero">
+        <h1>华体会 · 简明访问指南</h1>
+        <div class="sub">基于真实体验的实用信息 — 无需繁复步骤</div>
+    </div>
+
+    <!-- 背景说明 -->
+    <div class="context">
+        <p><strong>关于本页</strong> 聚合了日常访问 <a href="https://siteapp-hth.com.cn" style="color:#1f2937; text-decoration:none; border-bottom:1px solid #d1d5db; font-weight:500;">华体会</a> 过程中最常见的几类情形，并给出直接、可操作的说明。内容源自长期使用观察与用户反馈整理，不涉及内部流程或任何非公开信息。</p>
+        <p>以下三个板块分别对应初次接触、日常使用、以及常见疑问。所有表述均以清晰为前提，不包含主观推荐或诱导性措辞。</p>
+    </div>
+
+    <!-- 三段自然介绍 -->
+    <div class="intro-grid">
+
+        <div class="intro-item">
+            <span class="meta">01 · 概览与入口</span>
+            <h2>访问前的基本认知</h2>
+            <p>打开 <a href="https://siteapp-hth.com.cn" style="color:#1f2937; text-decoration:none; border-bottom:1px solid #d1d5db; font-weight:500;">华体会</a> 时，首先看到的是经过简化的界面布局。主要功能区域在页面中部集中呈现，信息层级清晰，便于快速定位。无论是通过手机浏览器还是桌面端，页面均采用自适应设计，缩放与响应均保持稳定。</p>
+            <p>根据多数用户的反馈，加载时间通常在 1–3 秒以内（视网络环境而定）。若遇到部分资源加载延迟，可尝试刷新或检查本地网络状态。</p>
+            <span class="tag">响应式布局</span>
+        </div>
+
+        <div class="intro-item">
+            <span class="meta">02 · 场景与操作</span>
+            <h2>日常使用中的几个关键点</h2>
+            <p>在 <a href="https://siteapp-hth.com.cn" style="color:#1f2937; text-decoration:none; border-bottom:1px solid #d1d5db; font-weight:500;">华体会</a> 上最常进行的操作包括浏览信息列表、查看详情以及使用筛选功能。所有交互控件均带有明确的文字标签，无歧义图标。建议在操作前先确认当前页面版本是否最新（页面底部通常带有版本标记）。</p>
+            <p>对于需要登录或身份验证的流程，官方采用了标准的加密通道。密码与个人数据传输均经过 TLS 加密，地址栏会显示安全锁标志。如果在公共网络下使用，建议启用 VPN 或至少避免保存敏感信息。</p>
+            <span class="tag">标准安全传输</span>
+        </div>
+
+        <div class="intro-item">
+            <span class="meta">03 · 常见调整与优化</span>
+            <h2>让访问更符合个人习惯</h2>
+            <p>部分用户倾向于调整字体大小或开启深色模式。通过浏览器自带的缩放功能（Ctrl + 滚轮）即可改变页面字号，而深色模式目前仅跟随系统设置自动切换。此外，<a href="https://siteapp-hth.com.cn" style="color:#1f2937; text-decoration:none; border-bottom:1px solid #d1d5db; font-weight:500;">华体会</a> 的页面缓存策略较为积极，重复访问时加载速度会明显提升。</p>
+            <p>若想清除本地缓存以查看完全更新的内容，可在浏览器设置中清空该站点过去一小时的缓存数据。绝大多数异常显示问题均可通过这一步骤解决。</p>
+            <span class="tag">缓存策略</span>
+        </div>
+
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-summary">
+        <h3>常见疑问摘要</h3>
+
+        <div class="faq-item">
+            <span class="faq-q">Q: 是否需要安装额外软件？</span>
+            <span class="faq-a">完全不需要。所有功能均通过浏览器直接使用，无需下载任何客户端或插件。只需在地址栏输入 <a href="https://siteapp-hth.com.cn">华体会</a> 域名即可。</span>
+        </div>
+
+        <div class="faq-item">
+            <span class="faq-q">Q: 如何判断当前访问的页面是官方版本？</span>
+            <span class="faq-a">确认 URL 地址为 <code style="background:#f3f4f6; padding:0 5px; border-radius:3px; font-size:0.85em;">https://siteapp-hth.com.cn</code>，且页面底部显示完整的版权信息。任何仿冒页面均无法复制精确的证书信息。</span>
+        </div>
+
+        <div class="faq-item">
+            <span class="faq-q">Q: 遇到页面部分内容不显示怎么办？</span>
+            <span class="faq-a">首先尝试强制刷新（Ctrl+F5 或 Cmd+Shift+R），其次清除浏览器缓存。若问题持续存在，可能是特定网络环境下 CDN 资源被拦截，可尝试切换网络或使用镜像线路。对于高级用户，亦可检查 DNS 设置。</span>
+        </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+        <p>以上信息基于对 <a href="https://siteapp-hth.com.cn" class="inline-link">华体会</a> 公开界面的整理与归纳，不涉及任何非公开或内部指引。所有操作均应以实际页面显示为准。</p>
+        <span class="small-meta">版本参考 · 页面结构稳定 · 最近更新：2025年2月</span>
+    </div>
+
+</div>
+</body>
+</html>
