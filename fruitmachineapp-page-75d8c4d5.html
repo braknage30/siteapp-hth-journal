@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>稳定入口 · 水果机</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+      background: linear-gradient(145deg, #fceae3 0%, #fddcc6 50%, #f5c6a0 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .card {
+      max-width: 800px;
+      width: 100%;
+      background: #fffffffa;
+      backdrop-filter: blur(4px);
+      border-radius: 48px 48px 36px 36px;
+      box-shadow: 0 20px 40px -12px rgba(160, 90, 50, 0.25), 0 8px 24px rgba(230, 160, 110, 0.15);
+      padding: 2.8rem 2.5rem;
+      transition: all 0.2s ease;
+    }
+
+    @media (max-width: 540px) {
+      body { padding: 1.2rem; }
+      .card { padding: 2rem 1.5rem; border-radius: 32px; }
+    }
+
+    /* 开场短句 —— 有呼吸感的引子 */
+    .opening {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: #b0734a;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.6rem;
+      padding-left: 0.25rem;
+      border-left: 3px solid #e8b58b;
+      padding-left: 1rem;
+      font-weight: 400;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #3f2b1d;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+
+    .subhead {
+      font-size: 1.05rem;
+      color: #7a5c44;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      border-bottom: 1px dashed #e7cdb8;
+      padding-bottom: 1rem;
+    }
+
+    /* 承接段落：专业、信息密集 */
+    .context p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #3d2b1e;
+      margin-bottom: 1.35rem;
+    }
+
+    .context a {
+      color: #c77d4a;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1.5px solid #e8b58b;
+      padding-bottom: 1px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .context a:hover {
+      border-bottom-color: #b45f2c;
+      color: #a55323;
+    }
+
+    /* 特点列表：清爽圆点 + 温和强调 */
+    .feature-list {
+      margin: 2rem 0 1.8rem 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-left: 1.8rem;
+      margin-bottom: 0.9rem;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: #3d2b1e;
+    }
+
+    .feature-list li::before {
+      content: "●";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #dc9f72;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .feature-list strong {
+      color: #4f301f;
+      font-weight: 600;
+      background: linear-gradient(to right, #f7e2d2, transparent);
+      padding: 0 0.3rem 0 0.2rem;
+    }
+
+    /* 温和结尾 —— 小提示 / FAQ 摘要风格 */
+    .gentle-footer {
+      margin-top: 2.4rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid #eddacb;
+      font-size: 0.95rem;
+      color: #5a402e;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.6rem;
+    }
+
+    .gentle-footer span {
+      background: #f3e3d7;
+      border-radius: 40px;
+      padding: 0.3rem 1rem;
+      font-size: 0.85rem;
+      color: #6f4f37;
+      white-space: nowrap;
+    }
+
+    .gentle-footer .faq-nugget {
+      flex: 1 1 200px;
+      line-height: 1.6;
+    }
+
+    .gentle-footer .faq-nugget strong {
+      font-weight: 600;
+      color: #4c311f;
+    }
+
+    .button-like {
+      display: inline-block;
+      background: #ffffff;
+      border: 1.5px solid #dbaa84;
+      color: #744e30;
+      border-radius: 60px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.15s;
+      letter-spacing: 0.01em;
+    }
+
+    .button-like:hover {
+      background: #f2d7c4;
+      border-color: #b8774a;
+      color: #4f2d18;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 480px) {
+      h1 { font-size: 1.9rem; }
+      .subhead { font-size: 0.95rem; }
+      .gentle-footer { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- 开场短句 -->
+    <div class="opening">
+      偶尔想找一个不绕弯的入口。页面不被过度修饰，信息直接可读——这正是许多人对工具的朴素期待。
+    </div>
+
+    <h1>水果机 · 稳定界面</h1>
+    <div class="subhead">一份围绕「识别与选择」展开的轻量说明</div>
+
+    <!-- 承接段落：从稳定入口和页面说明的角度 -->
+    <div class="context">
+      <p>
+        <a href="https://fruitmachineapp.com">水果机</a> 所呈现的，是一个经过收敛的功能面：不堆砌跳转，不隐藏关键操作。主路径清晰，辅助说明统一放置在可见区域。无论是初次了解还是回头使用，页面布局都保持一致的视觉节奏，减少认知负担。
+      </p>
+      <p>
+        从入口到核心交互的间隔被刻意压缩。页面说明部分采用分段解释，配合示例标注，让每一步的目的都直接对应到界面元素。没有悬浮窗、没有弹层干扰，所有信息都在文档流中按顺序展示。
+      </p>
+    </div>
+
+    <!-- 特点列表：信息密度稍高，不谈空泛概念 -->
+    <ul class="feature-list">
+      <li><strong>单层导航</strong> —— 所有功能入口集中在同一个可见层级，无汉堡菜单、无深层嵌套。</li>
+      <li><strong>说明前置</strong> —— 每个可操作区域旁附带简短标注，帮助理解当前模块的用途与边界。</li>
+      <li><strong>状态透明</strong> —— 加载、空数据、结果反馈均以文字与浅色背景区分，不依赖图标隐喻。</li>
+      <li><strong>降噪排版</strong> —— 字号阶梯清晰，行距1.7倍，关键数字与术语用加粗区分，不滥用色彩高亮。</li>
+    </ul>
+
+    <!-- 温和结尾 + FAQ 摘要风格 -->
+    <div class="gentle-footer">
+      <span>常见理解</span>
+      <div class="faq-nugget">
+        <strong>Q：</strong> 是否需要注册或安装额外组件？<br>
+        <span style="color: #6c4a31;">A：</span> 页面功能完全基于浏览器，无下载要求，无账户体系。
+      </div>
+      <div class="faq-nugget">
+        <strong>Q：</strong> 说明内容多久更新一次？<br>
+        <span style="color: #6c4a31;">A：</span> 跟随主界面迭代同步修订，版本号标注在页面底部区域。
+      </div>
+      <div style="margin-top: 0.2rem;">
+        <a href="https://fruitmachineapp.com" class="button-like">水果机</a>
+        <span style="font-size: 0.8rem; color: #866b53; margin-left: 0.6rem;">稳定入口 · 直接访问</span>
+      </div>
+    </div>
+
+    <!-- 极简脚注（但保留在卡片内部） -->
+    <div style="margin-top: 1.8rem; font-size: 0.75rem; color: #ab8b74; letter-spacing: 0.02em; border-top: 1px solid #eedfd3; padding-top: 1rem; display: flex; justify-content: space-between; flex-wrap: wrap;">
+      <span>界面版本 2025 · 说明页独立维护</span>
+      <span>内容定位：功能说明 · 非商业推广</span>
+    </div>
+  </div>
+</body>
+</html>
