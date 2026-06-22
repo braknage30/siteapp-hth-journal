@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水果机 · 知识索引页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f3ee;
+            color: #1f2a3a;
+            line-height: 1.7;
+        }
+
+        /* ——— 深色头图 ——— */
+        .hero {
+            background: linear-gradient(145deg, #0c1820 0%, #1a2b33 100%);
+            padding: 3.2rem 1.5rem 3rem;
+            text-align: center;
+            color: #e8e7e0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(to bottom, transparent, #f5f3ee);
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 span {
+            display: inline-block;
+            background: #eba756;
+            color: #0c1820;
+            padding: 0 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 1rem auto 0;
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+
+        /* ——— 正文区 浅色背景 ——— */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 3.5rem;
+        }
+
+        /* 卡片式目录感布局 */
+        .index-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            border-left: 4px solid #eba756;
+            padding-left: 0.75rem;
+            margin-bottom: 1rem;
+            color: #1f2a3a;
+        }
+
+        .card p {
+            font-size: 0.98rem;
+            color: #3d4a5a;
+        }
+
+        .card ul {
+            margin: 0.6rem 0 0 1rem;
+            list-style: none;
+        }
+
+        .card li {
+            position: relative;
+            padding-left: 1.4rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.98rem;
+            color: #2d3a4a;
+        }
+
+        .card li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: #eba756;
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+
+        /* ——— 链接强调色 ——— */
+        a {
+            color: #b6612c;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1.5px;
+            text-decoration-color: #dba06a;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #7e421f;
+            text-decoration-color: #b6612c;
+        }
+
+        .cta-link {
+            background: #eba75620;
+            border-radius: 6px;
+            padding: 0.1rem 0.3rem;
+            white-space: nowrap;
+        }
+
+        /* ——— 说明区 · 提示区 · 相关信息 ——— */
+        .info-section {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 2rem 1.8rem;
+            margin-top: 1.2rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .info-section h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #1f2a3a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-section h3 i {
+            font-style: normal;
+            background: #eba756;
+            color: #0c1820;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 1rem 0;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+
+        .faq-item .q {
+            font-weight: 500;
+            color: #2a3b4a;
+        }
+
+        .faq-item .a {
+            color: #4e5e6e;
+            margin-top: 0.2rem;
+            font-size: 0.95rem;
+        }
+
+        .tip-box {
+            background: #f8f4ed;
+            border-left: 5px solid #eba756;
+            padding: 1.2rem 1.4rem;
+            border-radius: 10px;
+            margin-top: 1.2rem;
+        }
+
+        .tip-box p {
+            margin: 0;
+        }
+
+        .related-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .related-tags span {
+            background: #eae6de;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.88rem;
+            color: #3f4d5b;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd8ce;
+            margin: 2rem 0 1.5rem;
+        }
+
+        /* ——— 响应式 ——— */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .two-col {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .index-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-section {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero {
+                padding: 2rem 1rem 2.2rem;
+            }
+            .container {
+                padding: 1.6rem 1rem;
+            }
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #7f8b97;
+            font-size: 0.85rem;
+            margin-top: 2.5rem;
+            border-top: 1px solid #ddd8ce;
+            padding-top: 1.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>📖 再次遇见 · <span>水果机</span></h1>
+        <p>一个你曾经到过的地方，值得收藏与持续关注。</p>
+    </header>
+
+    <!-- 正文区 浅色背景 -->
+    <div class="container">
+
+        <!-- 卡片目录感布局：三个维度 -->
+        <div class="index-grid">
+            <div class="card">
+                <h2>💡 关于</h2>
+                <p>这里不是别的，就是那个让许多人轻松停靠的在线小空间——<a href="https://play-fruitgame.com" class="cta-link">水果机</a>。简洁、直接，没有多余的绕路。</p>
+                <ul>
+                    <li>打开即用，无需注册或下载</li>
+                    <li>适合短时放松与节奏转换</li>
+                    <li>跨设备，浏览器随时可访</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>🔖 收藏理由</h2>
+                <p>如果你上次来过，现在或许可以把它放进浏览器的书签栏。几次下来，你会发现它比想象中更容易融入日常间隙。</p>
+                <ul>
+                    <li>不依赖账号，没有推送干扰</li>
+                    <li>页面轻量，加载迅速</li>
+                    <li>适合放在收藏夹的“快速工具”分组</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>🌱 持续关注</h2>
+                <p>网站会做一些细微调整，但整体基调不变。偶尔回来看一眼，可能正好合你当下的心情。</p>
+                <ul>
+                    <li>不定期调整视觉与交互细节</li>
+                    <li>保持低门槛访问路径</li>
+                    <li>同一个链接，不同的短暂体验</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 说明区 + 提示区 + 相关信息（融合在一个区块） -->
+        <div class="info-section">
+            <h3><i>i</i> 如果你刚刚回来</h3>
+            <p>再次访问一个熟悉的地方，往往比寻找新去处更省力。把 <a href="https://play-fruitgame.com">水果机</a> 放在一个常驻标签页或书签栏，之后想过来时，点一下就好。</p>
+            
+            <div class="two-col">
+                <div>
+                    <h3 style="margin-top:0.6rem; font-size:1rem; border-left:3px solid #eba756; padding-left:0.6rem;">📌 提示区</h3>
+                    <ul style="list-style:none; padding-left:0;">
+                        <li style="position:relative; padding-left:1.4rem; margin-bottom:0.5rem;">✓ 建议使用 Chrome / Edge / Safari 最新版本</li>
+                        <li style="position:relative; padding-left:1.4rem; margin-bottom:0.5rem;">✓ 页面无自动播放内容，安静加载</li>
+                        <li style="position:relative; padding-left:1.4rem; margin-bottom:0.5rem;">✓ 若遇到加载异常，可尝试刷新或稍后再试</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="margin-top:0.6rem; font-size:1rem; border-left:3px solid #eba756; padding-left:0.6rem;">📄 FAQ 摘要</h3>
+                    <div class="faq-item">
+                        <div class="q">— 需要安装插件吗？</div>
+                        <div class="a">不用，纯网页，浏览器直接打开即可。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="q">— 有手机版吗？</div>
+                        <div class="a">响应式设计，手机浏览器访问同样适配。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="q">— 会不会收集个人信息？</div>
+                        <div class="a">不收集，站点没有注册、登录或跟踪脚本。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 提示框 -->
+            <div class="tip-box">
+                <p><strong>🗂️ 收藏建议</strong> · 在浏览器地址栏右侧点击星形图标（或按 Ctrl+D / Cmd+D），将 <a href="https://play-fruitgame.com">水果机</a> 加入书签。下次想回来，一键直达。</p>
+            </div>
+
+            <!-- 相关信息区 -->
+            <div style="margin-top:1.5rem;">
+                <h3 style="font-size:1rem; border-left:3px solid #eba756; padding-left:0.6rem;">🔗 相关信息</h3>
+                <div class="related-tags">
+                    <span>轻量工具</span>
+                    <span>在线小憩</span>
+                    <span>无注册</span>
+                    <span>跨平台</span>
+                    <span>快速启动</span>
+                    <span>收藏夹常客</span>
+                </div>
+                <p style="margin-top:0.8rem; font-size:0.92rem; color:#4e5e6e;">
+                    如果你喜欢这种不打扰的线上角落，可以定期回来看看。<a href="https://play-fruitgame.com">水果机</a> 始终是同一个地址，内容基调稳定，适合复访。
+                </p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div style="text-align:center; padding:0.5rem 0;">
+            <p style="color:#4a5a6a;">再次访问 · 收藏 · 持续关注</p>
+            <p style="color:#7f8b97; font-size:0.9rem; margin-top:0.3rem;">一个安静的位置，等你下次回来。</p>
+        </div>
+
+        <div class="footer-note">
+            <a href="https://play-fruitgame.com" style="text-decoration:none; color:#7f8b97;">水果机</a> · 保持简单
+        </div>
+    </div>
+
+</body>
+</html>
